@@ -11,3 +11,5 @@ jobs:
                         - run: docker build -t joseto/hola-docker:$CIRCLE_SHA1 .
                         - run: docker push joseto/hola-docker:$CIRCLE_SHA1
                         - run: ssh -o StrictHostKeyChecking=no root@46.101.82.26 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
+
+
