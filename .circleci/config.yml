@@ -6,8 +6,8 @@ jobs:
                         - add_ssh_keys:
                                 fingerprints:
                                         - "6d:f9:73:9e:0f:ca:6f:e6:34:d7:66:f2:e2:ea:ab:31" 
-                        - checkout:
-                        - run: docker login -u "$DOCKER_USER -p $DOCKER_PASS"
+                        - checkout
+                        - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
                         - run: docker build -t joseto/hola-docker:$CIRCLE_SHA1 .
                         - run: docker push joseto/hola-docker:$CIRCLE_SHA1
                         - run: ssh -o StrictHostKeyChecking=no root@46.101.82.26 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
